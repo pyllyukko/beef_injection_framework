@@ -148,7 +148,7 @@ class Shank
   # @param [String] interface (eth0) The interface to poison through
   def initialize(ip, interface = "eth0")
     @inject_queue = Queue.new
-    @ip = IPAddr.new(ip)
+    @ip = IPAddr.new(ip, Socket::AF_INET)
     @ipr = @ip.to_range
     @arp_cache = ARPCache.new
     @interface = interface
